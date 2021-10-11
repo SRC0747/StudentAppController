@@ -20,14 +20,25 @@ public class StudentController {
     public List<StudentEntity> students() {
         return studentService.students();
     }
+
     @GetMapping(value = "/get-student-by-id")
     public StudentEntity getStudentById(@RequestParam int id) {
         return studentService.getStudentById(id);
     }
 
-    @GetMapping(value = "/get-student-by-name")
-    public StudentEntity getStudentByName(@RequestParam String name) {
-        return studentService.getStudentByName(name);
+    @GetMapping(value = "/get-student-by-roll")
+    public StudentEntity getStudentByRoll(@RequestParam int roll) {
+        return studentService.getStudentByRoll(roll);
+    }
+
+    @GetMapping(value = "/get-student-by-Firstname")
+    public StudentEntity getStudentByFirstName(@RequestParam String name) {
+        return studentService.getStudentByFirstName(name);
+    }
+
+    @GetMapping(value = "/get-student-by-Lastname")
+    public StudentEntity getStudentByLastName(@RequestParam String name) {
+        return studentService.getStudentByLastName(name);
     }
 
     @PostMapping(value = "/student")

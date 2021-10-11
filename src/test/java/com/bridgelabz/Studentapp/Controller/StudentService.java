@@ -6,14 +6,34 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Class for the business logic for student service
+ *
+ * @author Sampriti Roy Chowdhury
+ * @version 0.0.1
+ * @since 11-10-2021
+ */
+
 @Service
 public class StudentService {
     @Autowired
     private StudentRepository studentRepository;
+    @Autowired
+    private ModelMapper modelMapper;
 
+    /**
+     * Method for getting all the students from database
+     * @return list of {@link StudentEntity}
+     */
     public List<StudentEntity> students() {
         return studentRepository.findAll();
     }
+
+    /**
+     * Method for getting student by its id
+     * @param id unique identifier for record
+     * @return singular {@link StudentEntity}
+     */
     public StudentEntity getStudentById(int id) {
         Optional<StudentEntity> studentEntity = studentRepository.findById(id);
         if(studentEntity.isPresent()) {
@@ -22,7 +42,7 @@ public class StudentService {
         return null;
     }
     public StudentEntity getStudentByRoll(int roll) {
-        Optional<StudentEntity> studentEntity = studentRepository.findByRoll(roll);
+        Optional<StudentEntity> studentEntity = studentRepository.findByRollNo(roll);
         if(studentEntity.isPresent()) {
             return studentEntity.get();
         }
@@ -44,6 +64,12 @@ public class StudentService {
         return null;
     }
 
+    /**
+     *
+     * @param StudentDTO
+     * @return
+     */
+
     public StudentEntity addStudent(StudentEntity studentEntity) {
         return studentRepository.save(studentEntity);
     }
@@ -56,4 +82,7 @@ public class StudentService {
         return "Record does not exists with this id : " + id;
     }
 
+    public StudentEntity updateStudent(StudentEntity studentEntity) {
+        return studentRepository.save(studentEntity);
+    }
 }

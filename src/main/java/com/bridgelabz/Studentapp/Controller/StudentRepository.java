@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface StudentRepository extends JpaRepository<StudentEntity, Integer> {
     Optional<StudentEntity> findByFirstName(String firstName);
 
-    Optional<StudentEntity> findByRoll(int roll);
+    Optional<StudentEntity> findByRollNo(int roll);
 
     Optional<StudentEntity> findByLastName(String name);
 }
